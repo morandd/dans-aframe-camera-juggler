@@ -51,37 +51,51 @@ AFRAME.registerComponent('dans-camera-juggler', {
 
 	switchToOrbitCam: function () {
 
-		 console.log('switchToOrbitCam');
+		console.log('switchToOrbitCam');
 
-		this.data.orbitCamEl.setAttribute('camera',{active: true});
-		this.data.orbitCamEl.play(); // We must call play() and pause() in addition to setting the 'active' property. This may change in the future: https://github.com/aframevr/aframe/issues/2671
+		if (this.data.orbitCamEl) {
+			this.data.orbitCamEl.setAttribute('camera',{active: true});
+			this.data.orbitCamEl.play(); // We must call play() and pause() in addition to setting the 'active' property. This may change in the future: https://github.com/aframevr/aframe/issues/2671
+		}
 		this.data.lookCamEl.setAttribute('camera',{active: false});
 		this.data.lookCamEl.pause();
-		this.data.tlookCamEl.setAttribute('camera',{active: false});
-		this.data.tlookCamEl.pause();
+		if (this.data.tlookCamEl){
+			this.data.tlookCamEl.setAttribute('camera',{active: false});
+			this.data.tlookCamEl.pause();
+		}
 
 	},
 
 
 	switchToLookCam: function () {
 
-		 console.log('switchToLookCam');
+		console.log('switchToLookCam');
 
-		this.data.orbitCamEl.setAttribute('camera',{active: false});
-		this.data.orbitCamEl.pause();
+	 	if (this.data.orbitCamEl) {
+			this.data.orbitCamEl.setAttribute('camera',{active: false});
+			this.data.orbitCamEl.pause();
+		}
+
 		this.data.lookCamEl.setAttribute('camera',{active: true});
 		this.data.lookCamEl.play();
-		this.data.tlookCamEl.setAttribute('camera',{active: false});
-		this.data.tlookCamEl.pause();
+
+		if (this.data.tlookCamEl){
+			this.data.tlookCamEl.setAttribute('camera',{active: false});
+			this.data.tlookCamEl.pause();
+		}
 
 	},
 
 	switchToTouchlookCam: function () {
 
-		 console.log('switchToTouchlookCam');
+		console.log('switchToTouchlookCam');
 
-		this.data.orbitCamEl.setAttribute('camera',{active: false});
-		this.data.orbitCamEl.pause();
+		if (!this.data.tlookCamEl) { console.error('touchlook cam not found'); return; }
+
+		if (this.data.orbitCamEl){
+			this.data.orbitCamEl.setAttribute('camera',{active: false});
+			this.data.orbitCamEl.pause();
+		}		
 		this.data.lookCamEl.setAttribute('camera',{active: false});
 		this.data.lookCamEl.pause();
 		this.data.tlookCamEl.setAttribute('camera',{active: true});
