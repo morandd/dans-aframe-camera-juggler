@@ -6,8 +6,8 @@ AFrame offers a number of camera controllers for mouse, touch, and free-look, bu
 The necessity that birthed this invention is as follows: I want to show off a 3D object on a web site. It should work on the desktop, on a phone/tablet, and with a VR headset/Google Cardboard. Some scenes I'd like to show with orbit cam, and other scenes should be seen
 with a free-look camera. This component exists to juggle cameras as needed to accomplish this goal.
 
-There are two paradigms for this controller: `orbit` and `freelook`.
-
+There are two paradigms for this controller: `orbit` and `freelook`. Here is the logic:
+```
 I. Orbit-controls paradigm
 	A. On Desktop:
 		1. start: use orbit-cam
@@ -27,6 +27,7 @@ II. Look-controls paradigm
 		1. start: Use multitouch-look-cam*
 		2. enter-vr: Switch to look-cam
 		3. exit-vr: Switch to multitouch-look-cam
+```
 
 * There was no good free-look controller designed for touch input, so I built one: [multitouch-look-controls](https://github.com/morandd/aframe-multitouch-look-controls/). The AFrame look-controls on mobile uses the 'magic window' paradigm, taking camera controls from the phone deviceorientation. But in some cases it's more usable to have a touch-driven look controller, so folks can explore with their fingers instead of waving the phone about. 
 [multitouch-look-controls](https://github.com/morandd/aframe-multitouch-look-controls/) provides yaw, pitch, dolly, and pinch to zoom.
