@@ -6,8 +6,8 @@ AFrame offers a number of camera controllers for mouse, touch, and free-look, bu
 The necessity that birthed this invention is as follows: I want to show off a 3D object on a web site. It should work on the desktop, on a phone/tablet, and with a VR headset/Google Cardboard. Some scenes I'd like to show with orbit cam, and other scenes should be seen
 with a free-look camera. This component exists to juggle cameras as needed to accomplish this goal.
 
-There are two paradigms for this controller: `orbit` and `freelook`.
-
+There are two paradigms for this controller: `orbit` and `freelook`. Here is the logic:
+```
 I. Orbit-controls paradigm
 	A. On Desktop:
 		1. start: use orbit-cam
@@ -27,6 +27,7 @@ II. Look-controls paradigm
 		1. start: Use multitouch-look-cam*
 		2. enter-vr: Switch to look-cam
 		3. exit-vr: Switch to multitouch-look-cam
+```
 
 * There was no good free-look controller designed for touch input, so I built one: [multitouch-look-controls](https://github.com/morandd/aframe-multitouch-look-controls/). The AFrame look-controls on mobile uses the 'magic window' paradigm, taking camera controls from the phone deviceorientation. But in some cases it's more usable to have a touch-driven look controller, so folks can explore with their fingers instead of waving the phone about. 
 [multitouch-look-controls](https://github.com/morandd/aframe-multitouch-look-controls/) provides yaw, pitch, dolly, and pinch to zoom.
@@ -45,8 +46,10 @@ touchlookCamID | DOM id of the camera with multitouch-look-controls | #camera_to
 
 Include in page and add it to your `a-scene`. To use it, set up two cameras that get juggled between.
 
+Take a look at the example from multitouch-look-controls: [Example](https://morandd.github.io/aframe-multitouch-look-controls/example/)
+
 For example, for orbit paradigm:
-````
+```
 <script src="https://cdn.rawgit.com/tizzle/aframe-orbit-controls-component/v0.1.6/dist/aframe-orbit-controls-component.js"></script>
 <script src="https://morandd.github.io/dans-aframe-camera-juggler/dans-camera-juggler.js"></script>
 
@@ -56,6 +59,7 @@ For example, for orbit paradigm:
 ```
 
 Or for freelook:
+
 ```
 <script src="https://github.com/morandd/aframe-multitouch-look-controls/aframe-multitouch-look-controls.js"></script>
 <script src="https://morandd.github.io/dans-aframe-camera-juggler/dans-camera-juggler.js"></script>
