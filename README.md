@@ -28,8 +28,8 @@ II. Look-controls paradigm
 		2. enter-vr: Switch to look-cam
 		3. exit-vr: Switch to multitouch-look-cam
 
-* There was no good free-look controller designed for touch input, so I built one: (multitouch-look-controls). The AFrame look-controls on mobile uses the 'magic window' paradigm, taking camera controls from the phone deviceorientation. But in some cases it's more usable to have a touch-driven look controller, so folks can explore with their fingers instead of waving the phone about. 
-(multitouch-look-controls) provides yaw, pitch, dolly, and pinch to zoom.
+* There was no good free-look controller designed for touch input, so I built one: [multitouch-look-controls](https://github.com/morandd/aframe-multitouch-look-controls/). The AFrame look-controls on mobile uses the 'magic window' paradigm, taking camera controls from the phone deviceorientation. But in some cases it's more usable to have a touch-driven look controller, so folks can explore with their fingers instead of waving the phone about. 
+[multitouch-look-controls](https://github.com/morandd/aframe-multitouch-look-controls/) provides yaw, pitch, dolly, and pinch to zoom.
 
 
 # API #
@@ -38,21 +38,29 @@ Attribute | Description | Default
 paradigm | Required. Either 'freelook' or 'orbit' | ''
 orbitCamID | DOM id of the camera with orbit controls | #camera_orbit
 lookCamID | DOM id of the camera with look-controls | #camera_look
-touchlookCamID | DOM id of the camera with multtouch-look-controls | #camera_touchlook
+touchlookCamID | DOM id of the camera with multitouch-look-controls | #camera_touchlook
 
 
 # Using #
 
-Include in page:
-```
-<script src="https://morandd.github.io/dans-aframe-camera-juggler/dans-camera-juggler.js"></script>
-```
-Then add it to your `a-scene`. To use it, set up three cameras (or two, if you don't ned the multitouch-look cam).
+Include in page and add it to your `a-scene`. To use it, set up two cameras that get juggled between.
 
+For example, for orbit paradigm:
 ````
-	<script src="https://cdn.rawgit.com/tizzle/aframe-orbit-controls-component/v0.1.6/dist/aframe-orbit-controls-component.js"></script>
+<script src="https://cdn.rawgit.com/tizzle/aframe-orbit-controls-component/v0.1.6/dist/aframe-orbit-controls-component.js"></script>
+<script src="https://morandd.github.io/dans-aframe-camera-juggler/dans-camera-juggler.js"></script>
 
-<a-scene dans-aframe-camera-juggler="paradigm:orbit">
-<a-entity camera="active:true" orbit-controls
+<a-scene dans-camera-juggler="paradigm:orbit">
+<a-entity id="camera_orbit" camera="active:true" orbit-controls>
+<a-entity id="camera_look" camera="active:false" look-controls>
+```
 
+Or for freelook:
+```
+<script src="https://github.com/morandd/aframe-multitouch-look-controls/aframe-multitouch-look-controls.js"></script>
+<script src="https://morandd.github.io/dans-aframe-camera-juggler/dans-camera-juggler.js"></script>
+
+<a-scene dans-aframe-camera-juggler="paradigm:freelook">
+<a-entity id="camera_look" camera="active:true" look-controls>
+<a-entity id="camera_touchlook" camera="active:false" multitouch-look-controls>
 ```
