@@ -46,6 +46,8 @@ touchlookCamID | DOM id of the camera with multitouch-look-controls | #camera_to
 
 Include in page and add it to your `a-scene`. To use it, set up two cameras that get juggled between.
 
+Take a look at the example from multitouch-look-controls: [Example](https://morandd.github.io/aframe-multitouch-look-controls/example/)
+
 For example, for orbit paradigm:
 ````
 <script src="https://cdn.rawgit.com/tizzle/aframe-orbit-controls-component/v0.1.6/dist/aframe-orbit-controls-component.js"></script>
@@ -57,6 +59,7 @@ For example, for orbit paradigm:
 ```
 
 Or for freelook:
+
 ```
 <script src="https://github.com/morandd/aframe-multitouch-look-controls/aframe-multitouch-look-controls.js"></script>
 <script src="https://morandd.github.io/dans-aframe-camera-juggler/dans-camera-juggler.js"></script>
